@@ -1,3 +1,8 @@
+# How to run
+```Scripts\activate.bat```
+
+```py -m pip install -r requirements.txt```
+
 # Setup a new Django project
 
 ```py --version```
@@ -12,16 +17,23 @@
 
 ```python manage.py startapp User```
 
-# Integration with MySQL
+# Integration with PostgreSQL
 
 ```
-DATABASES = {  
-  'default': {  
-    'ENGINE': 'django.db.backends.mysql',  
-    'NAME': 'Blog',  
-    'USER':'root',  
-    'PASSWORD':'',  
-    'HOST':'localhost',  
-    'PORT':'3306'  
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': env('DB_NAME'),
+    'USER': env('DB_USER_NAME'),
+    'PASSWORD': env('DB_USER_PASSWORD'),
+    'HOST': env('DB_HOST'),
+    'PORT': env('DB_PORT'),
   }
+}
 ```
+
+# Migrate the Database
+
+py manage.py makemigrations
+
+py manage.py migrate
